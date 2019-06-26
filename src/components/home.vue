@@ -599,7 +599,8 @@
 				    success: function (data) {
 					    if (data.code === 200) {
 						    _this.tagList = data.data;
-						    //console.log(`_this.tagList:\r\n${JSON.stringify(_this.tagList)}`)
+                            _this.fetTotalSignData();
+                            //console.log(`_this.tagList:\r\n${JSON.stringify(_this.tagList)}`)
 					    }
 				    },
 				    error: function (data) {
@@ -645,7 +646,7 @@
                         _this.getTotalUserCount();
 						_this.getSigninUserCount();
 						//不在产生过人记录时就去更新部门信息
-						_this.fetTotalSignData();
+						// _this.fetTotalSignData();
 						//setTimeout(() => {
 						//  if (_this.currentIndex == 1) {
 						//    if (_this.$refs.staffPage) {
@@ -691,7 +692,6 @@
 //			    _this.btnTest();
 
 		    }, 2000);//定时器
-            _this.fetTotalSignData();
             _this.fetchTag();
 	    },
 	    destroyed: function () {

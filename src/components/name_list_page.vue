@@ -56,6 +56,7 @@
 <script>
     var _this;
     import TextScroller from "./text_scrollor.vue"
+
     var intervalId;
     export default {
         name: "NameListPage",
@@ -72,14 +73,14 @@
                 departmentSignData: [],
                 departments: [],
                 departmentHeightList: [],
-                calculatedIndex:0
+                calculatedIndex: 0
             }
         },
         methods: {
             positionChanged(index) {
                 let div = document.getElementById('div-scroll');
-                if(index > 0) {
-                    div.scrollTop = _this.departmentHeightList[index -1];
+                if (index > 0) {
+                    div.scrollTop = _this.departmentHeightList[index - 1];
                 } else {
                     div.scrollTop = 0;
                 }
@@ -98,7 +99,24 @@
                     success: function (data) {
                         if (data.code === 200) {
                             _this.departmentSignData = data.data;
+                            _this.departmentSignData.sort(function (o,p) {
+                                if (typeof o === "object" && typeof p === "object" && o && p) {
+                                    let a = _this.filterDepartmentName(o.tagId);
+                                    let b = _this.filterDepartmentName(p.tagId);
+                                    if (a === b) {
+                                        return 0;
+                                    }
+                                    if (typeof a === typeof b) {
+                                        return a < b ? -1 : 1;
+                                    }
+                                    return typeof a < typeof b ? -1 : 1;
+                                }
+                                else {
+                                    throw ("error");
+                                }
+                            });
                             _this.departments = _this.filterAllDepartment(_this.departmentSignData);
+                            //_this.departments.sort();
                             _this.calculateDepartmentHeight();
                             console.log(_this.departmentHeightList);
                         }
@@ -160,7 +178,7 @@
                 }
             },
             getImage(item) {
-                if(isUndefined(item.face_list) || item.face_list.length > 0) {
+                if (isUndefined(item.face_list) || item.face_list.length > 0) {
                     return PHOTO_URL + item.face_list[0].face_image_id;
                 } else {
                     return require('../assets/img/male.png');
@@ -188,9 +206,9 @@
                 return departments;
             },
             updateUI() {
-                this.fetTotalSignData();
                 this.fetchTag();
-                document.getElementById('div-scroll').addEventListener('scroll', ()=> {
+                this.fetTotalSignData();
+                document.getElementById('div-scroll').addEventListener('scroll', () => {
                     for (let i = 0; i < _this.departmentHeightList.length; i++) {
                         if (document.getElementById('div-scroll').scrollTop < _this.departmentHeightList[i]) {
                             _this.calculatedIndex = i;
@@ -204,7 +222,7 @@
         computed: {},
         filters: {},
         created: function () {
-	    //不进行自动的刷新
+            //不进行自动的刷新
             // intervalId = setInterval(()=>{
             //     _this.fetTotalSignData();
             //     console.log("fetTotalSignData");
