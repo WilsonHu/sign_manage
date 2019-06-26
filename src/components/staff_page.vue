@@ -185,13 +185,13 @@
 				    }
 				    if (!isFound) {
 				        //if(!_this.showDepartment(item)) continue;
-					    try {
-						    if (_this.leftDeparList.length >= MaxShowCount) {
-							    _this.leftDeparList.splice(0, 1)
-						    }
-					    } catch (ex) {
-						    console.log(ex);
-					    }
+                        // try {
+						 //    if (_this.leftDeparList.length >= MaxShowCount) {
+							//     _this.leftDeparList.splice(0, 1)
+						 //    }
+                        // } catch (ex) {
+						 //    console.log(ex);
+                        // }
 					    _this.leftDeparList.push({
 						    tagId: item.tagId,
 						    totalValue: item.totalStaff.length,
@@ -212,7 +212,22 @@
 					    }
 				    }
 			    }
-
+                _this.leftDeparList.sort(function (o, p) {
+                    if (typeof o === "object" && typeof p === "object" && o && p) {
+                        let a = o.departName;
+                        let b = p.departName;
+                        if (a === b) {
+                            return 0;
+                        }
+                        if (typeof a === typeof b) {
+                            return a < b ? -1 : 1;
+                        }
+                        return typeof a < typeof b ? -1 : 1;
+                    }
+                    else {
+                        throw ("error");
+                    }
+                })
 		    },
 
 		    updateStaffData(infoList, isShowVIP) {

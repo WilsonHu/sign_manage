@@ -2,11 +2,12 @@
     <div style="width: 220px;height: 40px;" >
         <el-row >
             <el-col :span="19" >
-                <span :style="{'float': 'left',
+                <div :style="{'float': 'left',
                  'font-size':'14px',
+                 'text-align':'left',
                  'font-family': 'PingFangSC-Semibold',
                  'color':isVip?'#D6BE98':'#FFFFFF'
-                 }" >{{departInfo.departName}}</span >
+                 }" >{{departInfo.departName}}</div >
             </el-col >
             <el-col :span="5" >
                 <span :style="{'float': 'right',
