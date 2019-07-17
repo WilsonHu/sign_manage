@@ -12,10 +12,10 @@
                         <div :class="isVip?'circleDiv-Vip':'circleDiv'" v-show="activedIndex==item.key" >
                         </div >
                     </div >
-                    <div v-show="item.key!=menuList.length-1"
-                         style="width: 2px;height: 12px; border: 1px solid #FFFFFF;
-                         float: left; margin-left: 40px;margin-top: 8px;opacity: 0.6"
-                    ></div >
+                    <!--<div v-show="item.key!=menuList.length-1"-->
+                         <!--style="width: 2px;height: 12px; border: 1px solid #FFFFFF;-->
+                         <!--float: left; margin-left: 40px;margin-top: 8px;opacity: 0.6"-->
+                    <!--&gt;</div >-->
                 </div >
 
             </div >
@@ -48,7 +48,7 @@
 			    activedIndex: "0",
 			    textSelectedStyle: {
 				    "text-align": "left",
-				    "font-size": "18px",
+				    "font-size": "21px",
 				    "font-family": 'PingFangSC-Semibold',
 				    "opacity": 1.0,
 			    },
@@ -103,16 +103,16 @@
      /*color: #C1C1C1*/
      /*}*/
 
-     .circleDiv {
-	     width: 6px;
-	     height: 6px;
-	     border: 1px solid #FFFFFF;
-	     border-radius: 50%;
-	     background-color: #FFFFFF;
-	     text-align: center;
-	     margin-top: 10px;
-	     margin-left: 15px;
-     }
+     /*.circleDiv {*/
+	     /*width: 6px;*/
+	     /*height: 6px;*/
+	     /*border: 1px solid #FFFFFF;*/
+	     /*border-radius: 50%;*/
+	     /*background-color: #FFFFFF;*/
+	     /*text-align: center;*/
+	     /*margin-top: 10px;*/
+	     /*margin-left: 15px;*/
+     /*}*/
 
      .circleDiv-Vip {
 	     width: 6px;

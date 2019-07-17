@@ -37,13 +37,13 @@
                                  style="width: 230px;height: 230px;border-radius: 50%;
                                  align-items: center;justify-content: center;
                                  overflow: hidden;
-                                 margin-top: 108px;margin-left: 6px;" />
+                                 margin-top: 116px;margin-left: 10px;" />
                             <div class="col-center-block text-center label" >
-                                <div style="min-height: 80px;margin-top: 40px;
-                                     font-size: 48px;color: #FFFFFF;font-family: PingFangSC-Semibold;" >
+                                <div style="min-height: 70px;margin-top: 30px;
+                                     font-size: 46px;color: #FFFFFF;font-family: PingFangSC-Semibold;" >
                                     {{u.name}}
                                 </div >
-                                <span style="font-size: 24px;color: #FFFFFF;font-family: SquareFont;" >
+                                <span style="font-size: 22px;color: #FFFFFF;font-family: SquareFont;" >
                                     {{u.departName != null ? u.departName : u.id}}
                                 </span >
                             </div >

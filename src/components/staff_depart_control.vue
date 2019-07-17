@@ -3,15 +3,17 @@
         <el-row >
             <el-col :span="19" >
                 <div :style="{'float': 'left',
-                 'font-size':'14px',
+                 'font-size':'18px',
                  'text-align':'left',
+                  'font-weight': 'bold',
                  'font-family': 'PingFangSC-Semibold',
                  'color':isVip?'#D6BE98':'#FFFFFF'
                  }" >{{departInfo.departName}}</div >
             </el-col >
             <el-col :span="5" >
                 <span :style="{'float': 'right',
-                 'font-size':'18px',
+                 'font-size':'24px',
+
                  'font-family': 'SquareFont',
                  'color':isVip?'#D6BE98':'#FFFFFF'
                  }" >{{departInfo.currentValue}}/{{departInfo.totalValue}}</span >
@@ -21,7 +23,7 @@
             <div class="progress"
                  :style="{'background-color':'transparent',
                  'border':isVip?'1px solid #D6BE98':'1px solid #FFFFFF',
-                 'height': '6px',
+                 'height': '10px',
                  'border-radius': '0px'
                  }" >
                 <div class="progress-bar" role="progressbar" :aria-valuenow="departInfo.currentValue"

@@ -2,21 +2,23 @@
     <div style="width: 200px;height: 100px;position: relative" >
         <el-row >
             <el-col :span="18" >
-                <div style="margin-right: 20px;margin-top: 29px;float: right" >
+                <div style="margin-right: 20px;margin-top: 17px;float: right;" >
                     <span :style="{'float': 'right',
-                         'font-size':'20px',
+                         'font-size':'28px',
                          'font-family': 'PingFangSC-Semibold',
+                         'font-weight': 'bold',
                          'color':isVip?'#D6BE98':'#FFFFFF'
                          }" >
                         {{staffInfo.name}}
                     </span >
                     <br >
                     <span :style="{'float': 'right',
-                         'font-size':'12px',
+                         'font-size':'16px',
                          'font-family': 'SquareFont',
+                          'font-weight': 'bold',
                          'color':isVip?'#D6BE98':'#FFFFFF',
                           'margin-right': '2px',
-                          'margin-top': '10px'
+                          'margin-top': '0px'
                          }" >
                         {{staffInfo.departName != null ? staffInfo.departName : staffInfo.id}}
                     </span >

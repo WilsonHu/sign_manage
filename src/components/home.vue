@@ -49,7 +49,7 @@
             </tr >
             <tr style="height: 10%;" >
                 <td width="30%" style="text-align: left;" >
-                    <div :class="isShowVIP?'down-left-line-vip':'down-left-line'" >
+                    <div :class="isShowVIP?'down-left-line-vip':'down-left-line'" @click="attendanceOut">
                         <br >
                         <div style="margin-left: 80px;" >
                             <span class="textlabel" >Check In</span >
@@ -178,7 +178,7 @@
 	    var data = null;
 	    try {
 		    data = jQuery.parseJSON(message.payloadString);
-		    console.log("解析出来的：data：" + JSON.stringify(data));
+		    //console.log("解析出来的：data：" + JSON.stringify(data));
 	    } catch (e) {
 		    console.log(e);
 	    }
@@ -292,7 +292,6 @@
 		    _this = this;
 		    return {
 			    sendText: "Hello mqtt",
-			    title: HOME_SCREEN_TITLE,
 			    currentTime: "",
 			    staffNum: 0,
 			    signInNum: 0,
@@ -323,6 +322,25 @@
 		    }
 	    },
 	    methods: {
+            //考勤导出
+            attendanceOut() {
+                $.ajax({
+                    url: HOST + "staff/exportRecord",
+                    type: "POST",
+                    success: function (data) {
+                        if (data.code == 200) {
+                            console.log(data.data);
+                            var a = document.createElement("a");
+                            a.setAttribute("href",FILE+ data.data);
+                            a.setAttribute("target","_blank");
+                            a.click();
+                        }
+                    },
+                    error: function () {
+                        showMessage(_this, '服务器访问出错', 0);
+                    }
+                });
+            },
             toSetDeviceIds() {
               _this.confirmCancelDialog = true;
               _this.deviceIDList = window.sessionStorage.getItem("device_id_list");
@@ -411,149 +429,6 @@
 			    }
 			    console.log("selected changed " + newKey);
 		    },
-
-		    btnTest() {
-
-			    var id = Math.round(Math.random() * 1000000);
-                onVisitorSign(JSON.parse(`
-                    [
-                      {
-                        "device_id": "string",
-                        "face_id": "string",
-                        "face_image_id": "string",
-                        "identity": "STRANGER",
-                        "person": {
-                          "face_list": [
-                            {
-                              "face_id": "string",
-                              "face_image_id": "5be96c8d39f4996f237368a8",
-                              "scene_image_id": "string"
-                            }
-                          ],
-                          "identity": "STAFF",
-                          "meta": {},
-                          "person_id": "5c05403139f499088cfabc0f",
-                          "person_information": {
-                            "birthday": "string",
-                            "company": "string",
-                            "employed_date": "string",
-                            "id": "string",
-                            "identity_number": "string",
-                            "name": "胡通",
-                            "phone": "string",
-                            "remark": "string",
-                            "visit_end_timestamp": 0,
-                            "visit_purpose": "0",
-                            "visit_start_timestamp": 0,
-                            "visit_time_type": "0",
-                            "visitee_name": "string"
-                          },
-                          "tag_id_list": [
-                            "string"
-                          ],
-                          "upload_time": 0
-                        },
-                        "scene_image_id": "string",
-                        "score": 0,
-                        "timestamp": 0,
-                        "track_id": "string"
-                      },
-                      {
-                        "device_id": "string",
-                        "face_id": "string",
-                        "face_image_id": "string",
-                        "identity": "STRANGER",
-                        "person": {
-                          "face_list": [
-                            {
-                              "face_id": "string",
-                              "face_image_id": "5c08c52339f49907e8a850b9",
-                              "scene_image_id": "string"
-                            }
-                          ],
-                          "identity": "STAFF",
-                          "meta": {},
-                          "person_id": "5c038e8439f4996f237370bb",
-                          "person_information": {
-                            "birthday": "string",
-                            "company": "string",
-                            "employed_date": "string",
-                            "id": "string",
-                            "identity_number": "string",
-                            "name": "李玮",
-                            "phone": "string",
-                            "remark": "string",
-                            "visit_end_timestamp": 0,
-                            "visit_purpose": "0",
-                            "visit_start_timestamp": 0,
-                            "visit_time_type": "0",
-                            "visitee_name": "string"
-                          },
-                          "tag_id_list": [
-                            "string"
-                          ],
-                          "upload_time": 0
-                        },
-                        "scene_image_id": "string",
-                        "score": 0,
-                        "timestamp": 0,
-                        "track_id": "string"
-                      },
-                      {
-                        "device_id": "string",
-                        "face_id": "string",
-                        "face_image_id": "string",
-                        "identity": "STRANGER",
-                        "person": {
-                          "face_list": [
-                            {
-                              "face_id": "string",
-                              "face_image_id": "5c0809f0a7986c07b7d753f8",
-                              "scene_image_id": "string"
-                            }
-                          ],
-                          "identity": "STAFF",
-                          "meta": {},
-                          "person_id": "5c05403139f499088cfabc0f",
-                          "person_information": {
-                            "birthday": "string",
-                            "company": "string",
-                            "employed_date": "string",
-                            "id": "string",
-                            "identity_number": "string",
-                            "name": "费费",
-                            "phone": "string",
-                            "remark": "string",
-                            "visit_end_timestamp": 0,
-                            "visit_purpose": "0",
-                            "visit_start_timestamp": 0,
-                            "visit_time_type": "0",
-                            "visitee_name": "string"
-                          },
-                          "tag_id_list": [
-                            "string"
-                          ],
-                          "upload_time": 0
-                        },
-                        "scene_image_id": "string",
-                        "score": 0,
-                        "timestamp": 0,
-                        "track_id": "string"
-                      }
-                    ]`
-                ));//方法1
-		    },
-
-		    getBgImg() {
-			    var bg;
-//			    if (_this.isShowVIP) {
-//				    bg = vipBg;
-//			    } else {
-//				    bg = signInBg;
-//			    }
-			    return bg;
-		    },
-
 		    onSend() {
 			    let strMsg = _this.sendText;// document.getElementById("msg").value;
 			    if (strMsg) {
@@ -688,10 +563,10 @@
 	    },
 	    mounted: function () {
 		    currentInterval = setInterval(() => {
-			    _this.currentTime = new Date().format("yyyy-MM-dd hh:mm");
+			    _this.currentTime = new Date().format("yyyy-MM-dd hh:mm:ss");
 //			    _this.btnTest();
 
-		    }, 2000);//定时器
+		    }, 1000);//定时器
             _this.fetchTag();
 	    },
 	    destroyed: function () {
@@ -813,7 +688,7 @@
     }
 
     .textlabel {
-	    font-size: 18px;
+	    font-size: 21px;
 	    font-family: 'PingFangSC-Semibold'
     }
 

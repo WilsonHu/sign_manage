@@ -22,7 +22,7 @@
                                 <td v-for=" item in row" style="width: 225px;height: 220px">
                                     <div :class="getMemberBgStyle(item.staff_id, department.currentRecordList)">
                                         <!-- <div class="number">{{item.person_information.id}}</div> -->
-                                        <div class="number">MARS</div>
+                                        <div class="number">SIGN</div>
                                         <div style="margin-top: 12px;text-align: center">
                                             <img :src="getImage(item)"
                                                  style="width: 80px;height: 80px;border-radius: 50%;align-items: center;justify-content: center;">
@@ -44,7 +44,7 @@
         <el-col class="right-panel" :span="7">
             <div>
                 <img :src="getIconLine()"/>
-                <div style="height: 725px;overflow: hidden">
+                <div style="height: 725px;overflow: hidden;font-weight: bold;">
                     <TextScroller :text-list="departments" :position-changed="positionChanged"
                                   :current-index="calculatedIndex"></TextScroller>
                 </div>
@@ -294,19 +294,21 @@
         opacity: 0.4;
     }
 
-    .member-name {
+      .member-name {
         font-family: PingFangSC-Semibold, sans-serif;
         font-size: 18px;
         color: #FFFFFF;
+        font-weight: bold;
         text-align: center;
-        padding-top: 10px;
+        padding-top: 8px;
     }
 
     .department-small-label {
-        font-size: 12px;
+        font-size: 14px;
         color: #FFFFFF;
         text-align: center;
-        padding-top: 10px;
+        font-weight: bold;
+        padding-top: 5px;
     }
 
     .number {
